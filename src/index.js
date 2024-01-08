@@ -1,8 +1,8 @@
 const express = require('express');
 const morgan = require('morgan');
-//const exphbs = require('express-handlebars');
 const { engine } = require('express-handlebars');
 const path = require('path');
+
 
 // initializations
 
@@ -18,27 +18,27 @@ app.engine('.hbs', engine({
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs',
     helpers: require('./lib/handlebars')
-  }));
+}));
 app.set('view engine', '.hbs')
 
 
 // Minddleawares
+
 app.use(morgan('dev'));
 app.use(express.urlencoded({
     extended: false
 }))
 app.use(express.json())
 
-
 // global variables
 app.use((req, res, next) => {
     next();
 }
-) 
+)
 // Routes
 app.use(require('./routes'));
 app.use(require('./routes/authetication'))
-app.use('/links',require('./routes/links'))
+app.use('/links', require('./routes/links'))
 
 
 
