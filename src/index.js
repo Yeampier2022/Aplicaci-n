@@ -12,7 +12,7 @@ const {database} = require('./key')
 // initializations
 
 const app = express();
-require('./lib/password')
+require('./lib/passport')
 
 // settings
 
